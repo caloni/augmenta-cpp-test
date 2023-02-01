@@ -23,6 +23,8 @@ class Order
         m_user(user),
         m_company(company) { }
 
+  Order() : m_qty() {}
+
   // do not alter these accessor methods
   std::string orderId() const    { return m_orderId; }
   std::string securityId() const { return m_securityId; }
@@ -91,6 +93,10 @@ class OrderCache : public OrderCacheInterface
   void cancelOrdersForSecIdWithMinimumQty(const std::string& securityId, unsigned int minQty);
   unsigned int getMatchingSizeForSecurity(const std::string& securityId);
   std::vector<Order> getAllOrders() const;
+
+private:
+
+  std::vector<Order> m_orders;
 
 };
 
