@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "OrderCache.cpp"
+#include "OrderCache.h"
 
 int main()
 {

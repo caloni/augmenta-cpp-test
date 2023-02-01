@@ -53,6 +53,9 @@ class OrderCacheInterface
 
  public:
 
+  // important to avoid memory leak calling the wrong destructor
+  virtual ~OrderCacheInterface() {}
+
   // implement the 6 methods below, do not alter signatures
 
   // add order to the cache
@@ -74,3 +77,20 @@ class OrderCacheInterface
   virtual std::vector<Order> getAllOrders() const = 0;
 
 };
+
+
+class OrderCache : public OrderCacheInterface
+{
+
+ public:
+
+  // OrderCacheInterface
+  void addOrder(Order order);
+  void cancelOrder(const std::string& orderId);
+  void cancelOrdersForUser(const std::string& user);
+  void cancelOrdersForSecIdWithMinimumQty(const std::string& securityId, unsigned int minQty);
+  unsigned int getMatchingSizeForSecurity(const std::string& securityId);
+  std::vector<Order> getAllOrders() const;
+
+};
+
