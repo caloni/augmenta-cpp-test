@@ -41,8 +41,28 @@ void OrderCache::cancelOrdersForSecIdWithMinimumQty(const std::string& securityI
 
 unsigned int OrderCache::getMatchingSizeForSecurity(const std::string& securityId)
 {
-  // TODO: implement it
-  return 0;
+  int msize = 0;
+  vector<Order> orders;
+  copy_if(m_orders.begin(), m_orders.end(), back_inserter(orders),
+    [&securityId](const Order& ord) { return ord.securityId() == securityId; });
+
+  for (auto ordOp1 = orders.begin(); ordOp1 != orders.end(); ++ordOp1)
+  {
+    for (auto ordOp2 = ordOp1 + 1; ordOp2 != orders.end(); ++ordOp2)
+    {
+      if (ordOp1->qty() && ordOp2->qty()
+        && ordOp1->side() != ordOp2->side()
+        && ordOp1->company() != ordOp2->company())
+      {
+        int m = min(ordOp1->qty(), ordOp2->qty());
+        ordOp1->qty(ordOp1->qty() - m);
+        ordOp2->qty(ordOp2->qty() - m);
+        msize += m;
+      }
+    }
+  }
+
+  return msize;
 }
 
 

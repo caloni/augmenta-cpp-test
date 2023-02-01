@@ -33,6 +33,8 @@ class Order
   std::string company() const    { return m_company; }
   unsigned int qty() const       { return m_qty; }
 
+  void qty(int qty)              { m_qty = qty; }
+
  private:
 
   // use the below to hold the order data
