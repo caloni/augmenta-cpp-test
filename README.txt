@@ -1,3 +1,15 @@
+INTRODUCTION
+
+This simple, naive, order manager, was created for a test interview. I had a
+pleasant evening thinking about not trying to complicate my first version. I
+had not a performance benchmark to top, so I just had fun.
+
+Of course the next versions can work in a more performatic, thread safe,
+"let's index my books to organize my exchange" way, robust behavior.
+
+The source control is at a private repo in
+the [GitHub](https://github.com/Caloni/augmenta-cpp-test).
+
 INSTRUCTIONS
 
 Your task is to implement an in-memory cache of order objects that supports
