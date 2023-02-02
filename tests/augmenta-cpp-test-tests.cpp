@@ -45,9 +45,9 @@ TEST_F(AugmentaCppTest_Tests, Test2)
   test2_cache.addOrder(Order{"OrdId11", "SecId1", "Sell", 1100, "User13", "Company2"});
   test2_cache.addOrder(Order{"OrdId12", "SecId2", "Buy", 1200, "User9", "Company2"});
   test2_cache.addOrder(Order{"OrdId13", "SecId1", "Sell", 1300, "User1", "Company"});
-  assert(test2_cache.getMatchingSizeForSecurity("SecId1") == 300);
-  assert(test2_cache.getMatchingSizeForSecurity("SecId2") == 1000);
-  assert(test2_cache.getMatchingSizeForSecurity("SecId3") == 600);
+  ASSERT_TRUE(test2_cache.getMatchingSizeForSecurity("SecId1") == 300);
+  ASSERT_TRUE(test2_cache.getMatchingSizeForSecurity("SecId2") == 1000);
+  ASSERT_TRUE(test2_cache.getMatchingSizeForSecurity("SecId3") == 600);
 }
 
 
@@ -65,9 +65,9 @@ TEST_F(AugmentaCppTest_Tests, Test3)
   test3_cache.addOrder(Order{"OrdId9", "SecId1", "Buy", 900, "User5", "Company2"});
   test3_cache.addOrder(Order{"OrdId10", "SecId1", "Sell", 1000, "User1", "Company1"});
   test3_cache.addOrder(Order{"OrdId11", "SecId2", "Sell", 1100, "User6", "Company2"});
-  assert(test3_cache.getMatchingSizeForSecurity("SecId1") == 900);
-  assert(test3_cache.getMatchingSizeForSecurity("SecId2") == 600);
-  assert(test3_cache.getMatchingSizeForSecurity("SecId3") == 0);
+  ASSERT_TRUE(test3_cache.getMatchingSizeForSecurity("SecId1") == 900);
+  ASSERT_TRUE(test3_cache.getMatchingSizeForSecurity("SecId2") == 600);
+  ASSERT_TRUE(test3_cache.getMatchingSizeForSecurity("SecId3") == 0);
 }
 
 
